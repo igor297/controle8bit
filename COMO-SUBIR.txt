@@ -1,0 +1,70 @@
+COMO SUBIR OS ARQUIVOS NO GITHUB (sem usar o terminal)
+Repositório: https://github.com/igor297/controle8bit
+
+========================================================================
+MÉTODO 1 - Enviar os arquivos prontos (MAIS FÁCIL)
+========================================================================
+1. Abra no navegador:
+   https://github.com/igor297/controle8bit/upload/main
+2. Clique em "choose your files" (escolher seus arquivos).
+3. Selecione TODOS os 5 arquivos desta pasta:
+   /home/joaoigor/Documentos/controle8bit/
+     - README.md
+     - install.sh
+     - uninstall.sh
+     - 90-8bitdo-xbox.conf
+     - check-sdl.py
+   (dica: clique no primeiro, segure Shift e clique no último)
+4. Clique em "Commit changes".
+
+Pronto. Não precisa copiar/colar nada.
+
+========================================================================
+MÉTODO 2 - Criar arquivo por arquivo copiando o conteúdo
+========================================================================
+Use o arquivo "controle8bit-GITHUB.txt" (na pasta Documentos), que tem o
+conteúdo de todos os arquivos separado por seções.
+
+Para cada arquivo:
+1. Abra: https://github.com/igor297/controle8bit/new/main
+2. No campo "File name" digite o nome EXATO (ex.: README.md).
+3. Abra "controle8bit-GITHUB.txt", copie o conteúdo da seção do arquivo
+   (ou abra o arquivo correspondente desta pasta no editor de textos,
+   Ctrl+A para selecionar tudo e Ctrl+C para copiar).
+4. Cole no editor do GitHub (Ctrl+V) e clique em "Commit changes".
+
+Se o Ctrl+V não funcionar, tente: botão direito > Colar, ou Shift+Insert.
+
+========================================================================
+O QUE É CADA ARQUIVO
+========================================================================
+README.md              - explicação do projeto (aparece na página do repo)
+install.sh             - instala a configuração na outra máquina
+uninstall.sh           - remove a configuração
+90-8bitdo-xbox.conf    - a configuração em si (mapeamento SDL)
+check-sdl.py           - script para verificar se o controle foi reconhecido
+
+========================================================================
+COMO USAR NA OUTRA MÁQUINA (depois de subir)
+========================================================================
+Opção A (git):
+  git clone https://github.com/igor297/controle8bit.git
+  cd controle8bit
+  bash install.sh
+
+Opção B (sem git): baixe os arquivos pelo site do GitHub (botão verde
+"Code" > "Download ZIP"), descompacte, abra o terminal na pasta e rode:
+  bash install.sh
+
+Depois:
+  - Reinicie a máquina (obrigatório se o systemd usar Linger=yes).
+  - Verifique com: python3 check-sdl.py
+    O controle deve aparecer como "Microsoft X-Box One pad" (tipo xboxone).
+
+========================================================================
+OBSERVAÇÃO
+========================================================================
+Se você subir pelo site (Método 1 ou 2), o repositório local em
+/home/joaoigor/controle8bit fica desatualizado. Para sincronizar depois:
+  cd /home/joaoigor/controle8bit
+  git pull origin main
